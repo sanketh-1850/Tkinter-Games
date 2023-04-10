@@ -8,6 +8,7 @@ root=Tk()
 root.title("Tic-Tac-Toe")
 root.iconbitmap(r'C:\Users\sanke\Downloads\tic-tac-toe_39453.ico')
 root.geometry("481x625")
+root.configure(bg="grey")
 
 count=0 #to count the number of turns
 
@@ -52,16 +53,16 @@ def check_win():
     draw=True
     for check in checklist:
         if check[0]["text"]+check[1]["text"]+check[2]["text"]=="XXX":
-            check[0].config(bg="red")
-            check[1].config(bg="red")
-            check[2].config(bg="red")
+            check[0].config(bg="azure3")
+            check[1].config(bg="azure3")
+            check[2].config(bg="azure3")
             disable_all_buttons()
             messagebox.showinfo("We have a winner!","Player X has won!")
             draw=False
         elif check[0]["text"]+check[1]["text"]+check[2]["text"]=="OOO":
-            check[0].config(bg="red")
-            check[1].config(bg="red")
-            check[2].config(bg="red")
+            check[0].config(bg="azure3")
+            check[1].config(bg="azure3")
+            check[2].config(bg="azure3")
             disable_all_buttons()
             messagebox.showinfo("We have a winner!","Player O has won!")
             draw=False
@@ -88,7 +89,7 @@ b8=Button(frame, text="", font=("Times New Roman",20), height=5, width=10, bg="S
 b9=Button(frame, text="", font=("Times New Roman",20), height=5, width=10, bg="SystemButtonFace", command=lambda: b_click(b9))
 
 #create restart button
-brestart=Button(root, text="Restart Game", font=("Times New Roman",15), height=2, width=25, bg="SystemButtonFace", command=lambda: restart())
+brestart=Button(root, text="Restart Game", font=("Times New Roman",15), height=2, width=25, bg="gainsboro", command=lambda: restart())
 
 #create buttons grid
 
@@ -115,7 +116,7 @@ frame.rowconfigure(1, weight=1)
 frame.rowconfigure(2, weight=1)
 
 #place restart button
-brestart.pack()
+brestart.pack(pady=5, padx=2)
 
 
 root.mainloop()
