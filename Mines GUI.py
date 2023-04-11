@@ -26,7 +26,7 @@ def show_all_mines():
     global grids,level,mines
     #mine_img=PhotoImage(file=r"C:\Users\sanke\Downloads\mine_icon_138375 (1).png")
     for i in mines:
-        grids[i].config(text="# MINE #")
+        grids[i].config(text="💣")
 
 
 #disable all buttons
