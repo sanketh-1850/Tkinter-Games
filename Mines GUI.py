@@ -26,7 +26,7 @@ def show_all_mines():
     global grids,level,mines
     #mine_img=PhotoImage(file=r"C:\Users\sanke\Downloads\mine_icon_138375 (1).png")
     for i in mines:
-        grids[i].config(text="💣")
+        grids[i].config(text="💣", bg="azure3")
 
 
 #disable all buttons
@@ -157,9 +157,10 @@ def main():
     level=Tk()
     level.title("Choose Difficulty Level")
     level.iconbitmap(r"C:\Users\sanke\Downloads\mine_icon_138375.ico")
-    Easy=Button(level, text="EASY",bg="SystemButtonFace", fg="Green", command=lambda: close(Easy))
-    Medium=Button(level, text="MEDIUM",bg="SystemButtonFace", fg="Yellow", command=lambda: close(Medium))
-    Hard=Button(level, text="HARD",bg="SystemButtonFace", fg="Red", command=lambda: close(Hard))
+    level.config(bg="grey")
+    Easy=Button(level, text="EASY",bg="Green", fg="White", command=lambda: close(Easy))
+    Medium=Button(level, text="MEDIUM",bg="#DCDC14", fg="White", command=lambda: close(Medium))
+    Hard=Button(level, text="HARD",bg="Red", fg="White", command=lambda: close(Hard))
     Easy.place(x=50, y=50)
     Medium.place(x=100, y=50)
     Hard.place(x=170, y=50)
@@ -170,7 +171,8 @@ def main():
     root=Tk()
     root.title("MineSweeper")
     root.iconbitmap(r"C:\Users\sanke\Downloads\mine_icon_138375.ico")
-    root.geometry("401x530")
+    root.geometry("450x530")
+    root.config(bg="grey")
 
     #create mines list
     mines=sample(range(25),minenumber)
@@ -181,13 +183,20 @@ def main():
 
     #creating buttons
     grids=[]
+    frame=Frame(root,relief="sunken")
+    frame.pack(fill= BOTH, expand= True, padx=30, pady=20)
     for i in range(25):
-        grids.append(Button(root, text="", height=5, width=10, bg="SystemButtonFace", command=lambda i=i: b_click(i)))
-        grids[i].grid(row=i//5, column=i%5)  #creating the grid of buttons
+        grids.append(Button(frame, text="", height=5, width=10, bg="SystemButtonFace", command=lambda i=i: b_click(i)))
+        grids[i].grid(row=i//5, column=i%5, sticky="NSEW")  #creating the grid of buttons
 
-    brestart=Button(root, text="Restart Game", font=("Times New Roman",15), height=2, width=25, bg="SystemButtonFace", command=lambda: restart())
+    for i in range(5):
+        frame.rowconfigure(i, weight=1)
+        frame.columnconfigure(i, weight=1)
 
-    brestart.place(x=55, y=450)
+    #create restart button
+    brestart=Button(root, text="Restart Game", font=("Times New Roman",15), height=2, width=25, bg="gainsboro", command=lambda: restart())
+
+    brestart.pack(pady=5, padx=2)
 
 
     root.mainloop()
